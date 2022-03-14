@@ -1,14 +1,25 @@
+using Gateway.Lextatico.Api.Configurations;
 using Newtonsoft.Json;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureAppConfiguration((hostContext, builder) =>
+{
+    if (hostContext.HostingEnvironment.EnvironmentName == "LocalDevelopment")
+        builder.AddUserSecrets<Program>();
+});
+
 builder.WebHost.ConfigureAppConfiguration(ic =>
 {
     ic.AddJsonFile("configuration.json");
     ic.AddJsonFile($"configuration.{builder.Environment.EnvironmentName}.json", true);
 });
+
+builder.Services.AddLextaticoJwt(builder.Configuration);
+
+builder.Services.AddLexitaticoCors();
 
 builder.Services.AddOcelot(builder.Configuration);
 
@@ -59,6 +70,13 @@ var conf = new OcelotPipelineConfiguration()
         }
     }
 };
+
+app.UseCors();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
+
 app.UseOcelot(conf).Wait();
 
 app.Run();

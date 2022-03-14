@@ -59,6 +59,25 @@
         },
         {
             "Key": "TerminalToken",
+            "DownstreamPathTemplate": "/api/terminal-token",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "analyzer.lextatico.com.br",
+                    "Port": "443"
+                }
+            ],
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete",
+                "Options"
+            ],
+            "UpstreamPathTemplate": "/terminal-token"
+        },
+        {
+            "Key": "TerminalToken - Everything",
             "DownstreamPathTemplate": "/api/terminal-token/{everything}",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [

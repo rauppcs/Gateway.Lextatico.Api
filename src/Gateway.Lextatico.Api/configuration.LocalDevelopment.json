@@ -59,6 +59,25 @@
         },
         {
             "Key": "TerminalToken",
+            "DownstreamPathTemplate": "/api/terminal-token",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "localhost",
+                    "Port": "9004"
+                }
+            ],
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete",
+                "Options"
+            ],
+            "UpstreamPathTemplate": "/terminal-token"
+        },
+        {
+            "Key": "TerminalToken - Everything",
             "DownstreamPathTemplate": "/api/terminal-token/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
