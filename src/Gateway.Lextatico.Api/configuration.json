@@ -1,0 +1,62 @@
+{
+    "Routes": [
+        {
+            "Key": "Auth",
+            "DownstreamPathTemplate": "/api/auth/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "auth.lextatico.com.br",
+                    "Port": "443"
+                }
+            ],
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete",
+                "Options"
+            ],
+            "UpstreamPathTemplate": "/auth/{everything}"
+        },
+        {
+            "Key": "Account",
+            "DownstreamPathTemplate": "/api/account/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "account.lextatico.com.br",
+                    "Port": "443"
+                }
+            ],
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete",
+                "Options"
+            ],
+            "UpstreamPathTemplate": "/account/{everything}"
+        },
+        {
+            "Key": "Analyzer",
+            "DownstreamPathTemplate": "/api/analyzer/{everything}",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "analyzer.lextatico.com.br",
+                    "Port": "443"
+                }
+            ],
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete",
+                "Options"
+            ],
+            "UpstreamPathTemplate": "/analyzer/{everything}"
+        }
+    ],
+    "GlobalConfiguration": {}
+}

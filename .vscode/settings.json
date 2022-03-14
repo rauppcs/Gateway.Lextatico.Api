@@ -1,0 +1,41 @@
+{
+    "docker.commands.composeUp": [
+        {
+            "label": "Compose Up",
+            "template": "docker-compose -p gateway_lextatico -f docker-compose.override.yml ${configurationFile} up ${detached} ${build}",
+            "contextTypes": [
+                "moby"
+            ]
+        },
+        {
+            "label": "Compose Up",
+            "template": "docker compose -p gateway_lextatico -f docker-compose.override.yml ${configurationFile} up ${detached}"
+        }
+    ],
+    "docker.commands.composeUpSubset": [
+        {
+            "label": "Compose Up",
+            "template": "docker-compose -p gateway_lextatico -f docker-compose.override.yml ${profileList} ${configurationFile} up ${detached} ${build} ${serviceList}",
+            "contextTypes": [
+                "moby"
+            ]
+        },
+        {
+            "label": "Compose Up",
+            "template": "docker compose -p gateway_lextatico -f docker-compose.override.yml ${configurationFile} ${profileList} up ${detached} ${serviceList}"
+        }
+    ],
+    "docker.commands.composeDown": [
+        {
+            "label": "Compose Down",
+            "template": "docker-compose -p gateway_lextatico -f docker-compose.override.yml ${configurationFile} down",
+            "contextTypes": [
+                "moby"
+            ]
+        },
+        {
+            "label": "Compose Down",
+            "template": "docker compose -p gateway_lextatico -f docker-compose.override.yml ${configurationFile} down"
+        }
+    ]
+}
