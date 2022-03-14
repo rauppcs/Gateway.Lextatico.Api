@@ -40,6 +40,25 @@
         },
         {
             "Key": "Analyzer",
+            "DownstreamPathTemplate": "/api/analyzer",
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "analyzer.lextatico.com.br",
+                    "Port": "443"
+                }
+            ],
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete",
+                "Options"
+            ],
+            "UpstreamPathTemplate": "/analyzer"
+        },
+        {
+            "Key": "Analyzer - Everything",
             "DownstreamPathTemplate": "/api/analyzer/{everything}",
             "DownstreamScheme": "https",
             "DownstreamHostAndPorts": [

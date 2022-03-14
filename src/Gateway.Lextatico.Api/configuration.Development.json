@@ -40,6 +40,25 @@
         },
         {
             "Key": "Analyzer",
+            "DownstreamPathTemplate": "/api/analyzer",
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "analyzer_lextatico_api",
+                    "Port": "9004"
+                }
+            ],
+            "UpstreamHttpMethod": [
+                "Get",
+                "Post",
+                "Put",
+                "Delete",
+                "Options"
+            ],
+            "UpstreamPathTemplate": "/analyzer"
+        },
+        {
+            "Key": "Analyzer - Everything",
             "DownstreamPathTemplate": "/api/analyzer/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
