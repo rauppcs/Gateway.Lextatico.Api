@@ -15,7 +15,7 @@
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Production"
+                "ASPNETCORE_ENVIRONMENT": "LocalDevelopment"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"

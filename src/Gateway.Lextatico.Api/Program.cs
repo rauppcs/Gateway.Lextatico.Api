@@ -16,8 +16,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureAppConfiguration((hostContext, builder) =>
 {
-    // if (hostContext.HostingEnvironment.IsLocalDevelopment())
-    builder.AddUserSecrets<Program>();
+    if (hostContext.HostingEnvironment.IsLocalDevelopment())
+        builder.AddUserSecrets<Program>();
 });
 
 builder.WebHost.ConfigureAppConfiguration(ic =>
