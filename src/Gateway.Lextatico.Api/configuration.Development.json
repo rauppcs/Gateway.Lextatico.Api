@@ -1,6 +1,7 @@
 {
     "Routes": [
         {
+            "SwaggerKey": "AuthApi",
             "Key": "Auth",
             "DownstreamPathTemplate": "/api/auth/{everything}",
             "DownstreamScheme": "http",
@@ -20,6 +21,7 @@
             "UpstreamPathTemplate": "/auth/{everything}"
         },
         {
+            "SwaggerKey": "AccountApi",
             "Key": "Account",
             "DownstreamPathTemplate": "/api/account/{everything}",
             "DownstreamScheme": "http",
@@ -39,6 +41,7 @@
             "UpstreamPathTemplate": "/account/{everything}"
         },
         {
+            "SwaggerKey": "AnalyzerApi",
             "Key": "Analyzer",
             "DownstreamPathTemplate": "/api/analyzer",
             "DownstreamScheme": "http",
@@ -58,6 +61,7 @@
             "UpstreamPathTemplate": "/analyzer"
         },
         {
+            "SwaggerKey": "AnalyzerApi",
             "Key": "Analyzer - Everything",
             "DownstreamPathTemplate": "/api/analyzer/{everything}",
             "DownstreamScheme": "http",
@@ -77,6 +81,7 @@
             "UpstreamPathTemplate": "/analyzer/{everything}"
         },
         {
+            "SwaggerKey": "AnalyzerApi",
             "Key": "TerminalToken",
             "DownstreamPathTemplate": "/api/terminal-token",
             "DownstreamScheme": "http",
@@ -96,6 +101,7 @@
             "UpstreamPathTemplate": "/terminal-token"
         },
         {
+            "SwaggerKey": "AnalyzerApi",
             "Key": "TerminalToken - Everything",
             "DownstreamPathTemplate": "/api/terminal-token/{everything}",
             "DownstreamScheme": "http",
@@ -113,6 +119,38 @@
                 "Options"
             ],
             "UpstreamPathTemplate": "/terminal-token/{everything}"
+        }
+    ],
+    "SwaggerEndPoints": [
+        {
+            "Key": "AuthApi",
+            "Config": [
+                {
+                    "Name": "Auth Lextatico Api",
+                    "Version": "v1",
+                    "Url": "http://auth_lextatico_api:9000/swagger/doc/swagger.json"
+                }
+            ]
+        },
+        {
+            "Key": "AccountApi",
+            "Config": [
+                {
+                    "Name": "Account Lextatico Api",
+                    "Version": "v1",
+                    "Url": "http://account_lextatico_api:9002/swagger/doc/swagger.json"
+                }
+            ]
+        },
+        {
+            "Key": "AnalyzerApi",
+            "Config": [
+                {
+                    "Name": "Analyzer Lextatico Api",
+                    "Version": "v1",
+                    "Url": "http://analyzer_lextatico_api:9004/swagger/doc/swagger.json"
+                }
+            ]
         }
     ],
     "GlobalConfiguration": {}
