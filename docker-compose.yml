@@ -14,3 +14,31 @@ services:
       - 7001:7001
     networks:
       - Lextatico
+
+  rabbitmq3:
+    container_name: "gateway_lextatico_rabbitmq3"
+    image: rabbitmq:3.9-management-alpine
+    networks:
+      - Lextatico
+    environment:
+      - RABBITMQ_DEFAULT_USER=lextatico
+      - RABBITMQ_DEFAULT_PASS=L&xtat1c02021
+    volumes:
+      - rabbitmqdata:/var/lib/rabbitmq/
+      - rabbitmqlog:/var/log/rabbitmq
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    container_name: gateway_lextatico_sqlserver
+    environment:
+      - SA_PASSWORD=L&xt@t1c02021
+      - ACCEPT_EULA=Y
+    volumes:
+      - sqlserverdata:/var/opt/mssql
+    ports:
+      - 1433:1433
+    networks:
+      - Lextatico
