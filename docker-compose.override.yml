@@ -1,7 +1,3 @@
-# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
-
-version: '3.4'
-
 services:
   gatewaylextaticoapi:
     environment:
@@ -9,8 +5,8 @@ services:
       - ASPNETCORE_Kestrel__Certificates__Default__Password=lextatico
       - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Lextatico.pfx
     volumes:
-      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/https:ro
+      - ${HOME}/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
+      - /ASP.NET/Https:/https:ro
 
 volumes:
   sqlserverdata:
@@ -18,6 +14,8 @@ volumes:
   rabbitmqdata:
     external: false
   rabbitmqlog:
+    external: false
+  mongodata:
     external: false
 
 networks:

@@ -1,7 +1,3 @@
-# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP .NET Core service.
-
-version: '3.4'
-
 services:
   gatewaylextaticoapi:
     image: ${DOCKER_REGISTRY-}gatewaylextaticoapi
@@ -40,5 +36,30 @@ services:
       - sqlserverdata:/var/opt/mssql
     ports:
       - 1433:1433
+    networks:
+      - Lextatico
+        
+  mongodb:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: lextatico
+      MONGO_INITDB_ROOT_PASSWORD: L&xtat1c02021
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+    networks:
+      - Lextatico
+        
+  mongo-express:
+    image: mongo-express
+    depends_on:
+      - mongodb
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: lextatico
+      ME_CONFIG_MONGODB_ADMINPASSWORD: L&xtat1c02021
+      ME_CONFIG_MONGODB_SERVER: mongo
+    ports:
+      - "8081:8081"
     networks:
       - Lextatico
