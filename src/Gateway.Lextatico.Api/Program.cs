@@ -14,17 +14,12 @@ if (HostEnvironmentEnvExtensions.IsDocker())
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.ConfigureAppConfiguration((hostContext, builder) =>
-{
-    if (hostContext.HostingEnvironment.IsLocalDevelopment())
-        builder.AddUserSecrets<Program>();
-});
+if (builder.Environment.IsLocalDevelopment())
+    builder.Configuration.AddUserSecrets<Program>();
 
-builder.WebHost.ConfigureAppConfiguration(ic =>
-{
-    ic.AddJsonFile("configuration.json");
-    ic.AddJsonFile($"configuration.{builder.Environment.EnvironmentName}.json", true);
-});
+builder.Configuration
+    .AddJsonFile("configuration.json")
+    .AddJsonFile($"configuration.{builder.Environment.EnvironmentName}.json", true);
 
 builder.Services.AddLextaticoJwt(builder.Configuration);
 
@@ -61,35 +56,32 @@ app.UseAuthentication();
 
 app.UseAuthorization();
 
-app.UseEndpoints(cf =>
-{
-    cf.MapHealthChecks("/status",
-              new HealthCheckOptions()
-              {
-                  ResponseWriter = async (context, report) =>
-                  {
-                      var result = JsonConvert.SerializeObject(
-                          new
-                          {
-                              statusApplication = report.Status.ToString(),
-                              healthChecks = report.Entries.Select(e => new
-                              {
-                                  check = e.Key,
-                                  ErrorMessage = e.Value.Exception?.Message,
-                                  status = Enum.GetName(typeof(HealthStatus), e.Value.Status)
-                              })
-                          });
-                      context.Response.ContentType = MediaTypeNames.Application.Json;
-                      await context.Response.WriteAsync(result);
-                  }
-              });
+app.MapHealthChecks("/status",
+    new HealthCheckOptions()
+    {
+        ResponseWriter = async (context, report) =>
+        {
+            var result = JsonConvert.SerializeObject(
+                new
+                {
+                    statusApplication = report.Status.ToString(),
+                    healthChecks = report.Entries.Select(e => new
+                    {
+                        check = e.Key,
+                        ErrorMessage = e.Value.Exception?.Message,
+                        status = Enum.GetName(typeof(HealthStatus), e.Value.Status)
+                    })
+                });
+            context.Response.ContentType = MediaTypeNames.Application.Json;
+            await context.Response.WriteAsync(result);
+        }
+    });
 
-    cf.MapHealthChecks("/healthchecks-data-ui", new HealthCheckOptions()
+app.MapHealthChecks("/healthchecks-data-ui", new HealthCheckOptions()
     {
         Predicate = _ => true,
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
     });
-});
 
 app.UseSwaggerForOcelotUI();
 
