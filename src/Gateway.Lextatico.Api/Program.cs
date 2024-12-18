@@ -9,9 +9,6 @@ using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 using HostEnvironmentEnvExtensions = Gateway.Lextatico.Api.Extensions.HostEnvironmentEnvExtensions;
 
-if (HostEnvironmentEnvExtensions.IsDocker())
-    Thread.Sleep(30000);
-
 var builder = WebApplication.CreateBuilder(args);
 
 if (builder.Environment.IsLocalDevelopment())
@@ -20,6 +17,8 @@ if (builder.Environment.IsLocalDevelopment())
 builder.Configuration
     .AddJsonFile("configuration.json")
     .AddJsonFile($"configuration.{builder.Environment.EnvironmentName}.json", true);
+
+builder.Host.UseLextaticoSerilog(builder.Environment, builder.Configuration);
 
 builder.Services.AddLextaticoJwt(builder.Configuration);
 
@@ -83,8 +82,13 @@ app.MapHealthChecks("/healthchecks-data-ui", new HealthCheckOptions()
         ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
     });
 
+app.UseEndpoints(e =>
+{
+    e.MapControllers();
+});
+
 app.UseSwaggerForOcelotUI();
 
-app.UseOcelot().Wait();
+app.UseOcelot();
 
 app.Run();
