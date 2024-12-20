@@ -44,7 +44,7 @@ services:
     networks:
       - Lextatico
         
-  mongodb:
+  mongo:
     image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: lextatico
@@ -59,7 +59,7 @@ services:
   mongo-express:
     image: mongo-express
     depends_on:
-      - mongodb
+      - mongo
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: lextatico
       ME_CONFIG_MONGODB_ADMINPASSWORD: L&xtat1c02021
@@ -68,3 +68,18 @@ services:
       - "8082:8081"
     networks:
       - Lextatico
+        
+  seq:
+    image: datalust/seq:latest
+    container_name: seq
+    depends_on:
+      - gatewaylextaticoapi
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
+    networks:
+      - Lextatico
+    cap_drop:
+      - NET_RAW

@@ -1,9 +1,9 @@
 {
     "Routes": [
         {
-            "SwaggerKey": "AuthApi",
+            "SwaggerKey": "AuthApiV1",
             "Key": "Auth",
-            "DownstreamPathTemplate": "/api/auth/{everything}",
+            "DownstreamPathTemplate": "/api/v1/auth/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -18,12 +18,12 @@
                 "Delete",
                 "Options"
             ],
-            "UpstreamPathTemplate": "/auth/{everything}"
+            "UpstreamPathTemplate": "/v1/auth/{everything}"
         },
         {
-            "SwaggerKey": "AccountApi",
+            "SwaggerKey": "AccountApiV1",
             "Key": "Account",
-            "DownstreamPathTemplate": "/api/account/{everything}",
+            "DownstreamPathTemplate": "/api/v1/account/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -38,12 +38,12 @@
                 "Delete",
                 "Options"
             ],
-            "UpstreamPathTemplate": "/account/{everything}"
+            "UpstreamPathTemplate": "/v1/account/{everything}"
         },
         {
-            "SwaggerKey": "AnalyzerApi",
-            "Key": "Analyzer",
-            "DownstreamPathTemplate": "/api/analyzer",
+            "SwaggerKey": "AnalyzerApiV1",
+            "Key": "Analyzer - Root",
+            "DownstreamPathTemplate": "/api/v1/analyzer",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -58,12 +58,12 @@
                 "Delete",
                 "Options"
             ],
-            "UpstreamPathTemplate": "/analyzer"
+            "UpstreamPathTemplate": "/v1/analyzer"
         },
         {
-            "SwaggerKey": "AnalyzerApi",
+            "SwaggerKey": "AnalyzerApiV1",
             "Key": "Analyzer - Everything",
-            "DownstreamPathTemplate": "/api/analyzer/{everything}",
+            "DownstreamPathTemplate": "/api/v1/analyzer/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -78,12 +78,12 @@
                 "Delete",
                 "Options"
             ],
-            "UpstreamPathTemplate": "/analyzer/{everything}"
+            "UpstreamPathTemplate": "/v1/analyzer/{everything}"
         },
         {
-            "SwaggerKey": "AnalyzerApi",
-            "Key": "TerminalToken",
-            "DownstreamPathTemplate": "/api/terminal-token",
+            "SwaggerKey": "AnalyzerApiV1",
+            "Key": "TerminalToken - Root",
+            "DownstreamPathTemplate": "/api/v1/terminal-token",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -98,12 +98,12 @@
                 "Delete",
                 "Options"
             ],
-            "UpstreamPathTemplate": "/terminal-token"
+            "UpstreamPathTemplate": "/v1/terminal-token"
         },
         {
-            "SwaggerKey": "AnalyzerApi",
+            "SwaggerKey": "AnalyzerApiV1",
             "Key": "TerminalToken - Everything",
-            "DownstreamPathTemplate": "/api/terminal-token/{everything}",
+            "DownstreamPathTemplate": "/api/v1/terminal-token/{everything}",
             "DownstreamScheme": "http",
             "DownstreamHostAndPorts": [
                 {
@@ -118,37 +118,37 @@
                 "Delete",
                 "Options"
             ],
-            "UpstreamPathTemplate": "/terminal-token/{everything}"
+            "UpstreamPathTemplate": "/v1/terminal-token/{everything}"
         }
     ],
     "SwaggerEndPoints": [
         {
-            "Key": "AuthApi",
+            "Key": "AuthApiV1",
             "Config": [
                 {
                     "Name": "Auth Lextatico Api",
                     "Version": "v1",
-                    "Url": "http://localhost:9000/swagger/doc/swagger.json"
+                    "Url": "http://localhost:9000/swagger/v1/swagger.json"
                 }
             ]
         },
         {
-            "Key": "AccountApi",
+            "Key": "AccountApiV1",
             "Config": [
                 {
                     "Name": "Account Lextatico Api",
                     "Version": "v1",
-                    "Url": "http://localhost:9002/swagger/doc/swagger.json"
+                    "Url": "http://localhost:9002/swagger/v1/swagger.json"
                 }
             ]
         },
         {
-            "Key": "AnalyzerApi",
+            "Key": "AnalyzerApiV1",
             "Config": [
                 {
                     "Name": "Analyzer Lextatico Api",
                     "Version": "v1",
-                    "Url": "http://localhost:9004/swagger/doc/swagger.json"
+                    "Url": "http://localhost:9004/swagger/v1/swagger.json"
                 }
             ]
         }

@@ -89,6 +89,6 @@ app.UseEndpoints(e =>
 
 app.UseSwaggerForOcelotUI();
 
-app.UseOcelot();
+await app.UseOcelot();
 
 app.Run();

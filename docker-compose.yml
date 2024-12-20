@@ -39,7 +39,7 @@ services:
     networks:
       - Lextatico
         
-  mongodb:
+  mongo:
     image: mongo
     environment:
       MONGO_INITDB_ROOT_USERNAME: lextatico
@@ -54,7 +54,7 @@ services:
   mongo-express:
     image: mongo-express
     depends_on:
-      - mongodb
+      - mongo
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: lextatico
       ME_CONFIG_MONGODB_ADMINPASSWORD: L&xtat1c02021
