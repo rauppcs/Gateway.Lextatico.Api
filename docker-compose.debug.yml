@@ -76,6 +76,7 @@ services:
       - gatewaylextaticoapi
     environment:
       - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_ADMINPASSWORD=L&xtat1c02021
     ports:
       - 5341:5341
       - 8081:80

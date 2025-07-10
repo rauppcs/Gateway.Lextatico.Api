@@ -3,10 +3,10 @@ services:
     environment:
       - IS_DOCKER=True
       - ASPNETCORE_Kestrel__Certificates__Default__Password=lextatico
-      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Lextatico.pfx
+      - ASPNETCORE_Kestrel__Certificates__Default__Path=/https/Lextatico.Api.pfx
     volumes:
-      - ${HOME}/.microsoft/usersecrets:/root/.microsoft/usersecrets:ro
-      - /ASP.NET/Https:/https:ro
+      - $APPDATA\Microsoft\UserSecrets:/root/.microsoft/usersecrets:ro
+      - $APPDATA\ASP.NET\Https:/https:ro
 
 volumes:
   sqlserverdata:
