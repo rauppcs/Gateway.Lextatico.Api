@@ -4,7 +4,7 @@ services:
     container_name: gateway_lextatico_api
     build:
       context: .
-      dockerfile: src/Gateway.Lextatico.Api/Dockerfile
+      dockerfile: src/Gateway.Lextatico.Api/Dockerfile-debug
     ports:
       - 7000:7000
       - 7001:7001
